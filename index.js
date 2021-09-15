@@ -16,17 +16,19 @@ function compareValues(sum, luckyNumber) {
   showMessage();
   if (sum % luckyNumber === 0) {
     outputBox.innerText = "Your birthday is lucky 🎊";
+    outputBox.style.backgroundColor = "green";
   } else {
-    outputBox.innerText = "You Make your own Luck 😎";
+    outputBox.innerText = "You Make your own Luck ";
+    outputBox.style.backgroundColor = "black";
   }
 }
 
 function checkBirthDateIsLucky() {
   const dob = dateOfBirth.value;
   const sum = calculateSum(dob);
-  compareValues(sum, luckyNumber.value);
+  // compareValues(sum, luckyNumber.value);
 
-  if (sum && dob && luckyNumber.value) {
+  if (sum && dob && luckyNumber.value > 0) {
     compareValues(sum, luckyNumber.value);
   } else {
     outputBox.innerText = " ⚠️ Please Enter both the fields ⚠️";
