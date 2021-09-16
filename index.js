@@ -6,19 +6,20 @@ const outputBox = document.querySelector("#output-box");
 function hideMessage() {
   outputBox.style.display = "none";
 }
-function showMessage() {
+function showMessage(msg) {
+  outputBox.innerText = msg;
   outputBox.style.display = "block";
 }
 
 hideMessage();
 function compareValues(sum, luckyNumber) {
-  console.log(sum);
+  // console.log(sum);
   showMessage();
   if (sum % luckyNumber === 0) {
-    outputBox.innerText = "Your birthday is lucky 🎊";
+    showMessage("Your birthday is lucky 🎊");
     outputBox.style.backgroundColor = "green";
   } else {
-    outputBox.innerText = "You Make your own Luck ";
+    showMessage("You Make your own Luck ");
     outputBox.style.backgroundColor = "black";
   }
 }
@@ -26,12 +27,14 @@ function compareValues(sum, luckyNumber) {
 function checkBirthDateIsLucky() {
   const dob = dateOfBirth.value;
   const sum = calculateSum(dob);
-  // compareValues(sum, luckyNumber.value);
 
   if (sum && dob && luckyNumber.value > 0) {
-    compareValues(sum, luckyNumber.value);
+    console.log(sum, dob, Number(luckyNumber.value));
+    compareValues(sum, Number(luckyNumber.value));
+  } else if (Math.sign(luckyNumber.value) === -1) {
+    showMessage("Lucky Number Cannot be Negative");
   } else {
-    outputBox.innerText = " ⚠️ Please Enter both the fields ⚠️";
+    showMessage(" ⚠️ Please Enter both the fields ");
   }
 }
 
